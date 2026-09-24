@@ -1,0 +1,311 @@
+2026-09-20 04:45:35,928 | INFO | pipeline started
+2026-09-20 04:45:35,929 | INFO | Loading data from data\raw\students_raw.csv
+2026-09-20 04:45:35,939 | INFO | Loaded 8 rows 6 columns
+2026-09-20 04:45:35,977 | INFO | Saved data to data\processed\students_ml_ready.csv
+2026-09-20 04:45:35,977 | INFO | Completed successfully
+2026-09-20 23:40:23,199 | INFO | pipeline started
+2026-09-20 23:40:23,199 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-20 23:40:24,958 | INFO | Loaded 66 rows 7 columns
+2026-09-20 23:40:24,980 | INFO | Saved data to C:\Users\Marwan\student_data_pipeline\data\processed\students_ml_ready.csv
+2026-09-20 23:40:24,981 | INFO | Completed successfully
+2026-09-21 00:24:47,886 | INFO | Pipeline started
+2026-09-21 00:24:47,887 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 00:24:47,906 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 00:24:47,906 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 00:24:50,171 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 00:24:50,183 | INFO | Loading data from PostgreSQL
+2026-09-21 00:24:50,308 | ERROR | Pipeline failed: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "student_data" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1290, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "student_data" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Marwan\student_data_pipeline\src\pipeline.py", line 486, in run_pipeline
+    postgres_df = load_data_from_postgresql()
+  File "C:\Users\Marwan\student_data_pipeline\src\pipeline.py", line 237, in load_data_from_postgresql
+    df = pd.read_sql(
+        query,
+        engine
+    )
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\pandas\io\sql.py", line 700, in read_sql
+    with pandasSQL_builder(con) as pandas_sql:
+         ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\pandas\io\sql.py", line 908, in pandasSQL_builder
+    return SQLDatabase(con, schema, need_transaction)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\pandas\io\sql.py", line 1649, in __init__
+    con = self.exit_stack.enter_context(con.connect())
+                                        ~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3295, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2450, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1290, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "student_data" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-21 00:25:42,452 | INFO | Pipeline started
+2026-09-21 00:25:42,452 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 00:25:42,456 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 00:25:42,456 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 00:25:43,991 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 00:25:44,000 | INFO | Loading data from PostgreSQL
+2026-09-21 00:25:44,131 | ERROR | Pipeline failed: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "student_data" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1290, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "student_data" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Marwan\student_data_pipeline\src\pipeline.py", line 486, in run_pipeline
+    postgres_df = load_data_from_postgresql()
+  File "C:\Users\Marwan\student_data_pipeline\src\pipeline.py", line 237, in load_data_from_postgresql
+    df = pd.read_sql(
+        query,
+        engine
+    )
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\pandas\io\sql.py", line 700, in read_sql
+    with pandasSQL_builder(con) as pandas_sql:
+         ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\pandas\io\sql.py", line 908, in pandasSQL_builder
+    return SQLDatabase(con, schema, need_transaction)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\pandas\io\sql.py", line 1649, in __init__
+    con = self.exit_stack.enter_context(con.connect())
+                                        ~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3295, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2450, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1290, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Marwan\student_data_pipeline\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "student_data" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-21 00:28:11,938 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 00:28:11,943 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 00:28:11,943 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 00:28:13,902 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 03:40:28,538 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 03:40:28,551 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 03:40:28,552 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 03:40:45,790 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 03:51:58,857 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 03:51:58,862 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 03:51:58,862 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 03:52:08,135 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 03:55:41,537 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 03:55:41,543 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 03:55:41,544 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 03:55:45,235 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 04:00:28,043 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 04:00:28,049 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 04:00:28,049 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 04:00:30,501 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 04:09:29,343 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 04:09:29,348 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 04:09:29,348 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 04:10:05,572 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 04:44:04,816 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 04:44:04,823 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 04:44:04,823 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-21 04:44:08,887 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-21 04:49:36,459 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-21 04:49:36,465 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-21 04:49:36,465 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-22 02:36:30,885 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-22 02:36:30,897 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-22 02:36:30,897 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-22 02:45:28,991 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-22 02:45:28,995 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-22 02:45:28,996 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students
+2026-09-22 02:45:31,003 | INFO | Source: API | Rows: 66 | Columns: 6
+2026-09-25 02:08:40,440 | INFO | Loading data from CSV: C:\Users\Marwan\student_data_pipeline\data\raw\students_raw.csv
+2026-09-25 02:08:40,462 | INFO | Source: CSV | Rows: 8 | Columns: 6
+2026-09-25 02:08:40,463 | INFO | Loading data from API: https://6ab0307fee9c55c910bf96b0.mockapi.io/api/v1/students

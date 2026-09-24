@@ -1,0 +1,67 @@
+﻿student_id,name,age,gpa,attendance,city
+101,Ahmed,22.0,3.5,95.0,Sana'a
+102,Mohammed,24.0,3.2,88.0,Aden
+103,Ali,21.0,3.8,97.0,Taiz
+104,Sara,23.0,3.9,92.0,Ibb
+105,Mona,25.0,2.9,80.0,Hodeidah
+1001,Ahmed Ali,22.0,3.5,92.0,Sanaa
+1002,Sara Mohammed,21.0,3.8,96.0,Sanaa
+1003,Khaled Hassan,23.0,3.45,88.0,Dhamar
+1004,Mona Saleh,20.0,3.45,94.0,Ibb
+1005,Ali Ahmed,40.0,2.9,75.0,Taiz
+1006,Huda Omar,22.0,3.2,56.5,Sanaa
+1007,Ahmed Ali,22.0,3.5,92.0,Sanaa
+1008,Mohammed Noor,21.0,3.9,56.5,Dhamar
+35,Ahmed,42.0,3.45,50.0,city 1
+63,Ali,80.0,3.45,52.0,city 3
+21,Sara,40.0,3.45,65.0,city 4
+47,Khaled,40.0,3.45,97.0,city 5
+91,Fatima,46.0,3.45,10.0,city 6
+3,Maryam,48.0,3.45,53.0,city 7
+12,Noor,40.0,3.45,33.0,city 9
+95,Abdullah,40.0,3.45,11.0,city 10
+93,Aisha,79.0,3.45,99.0,city 12
+17,Hassan,40.0,3.45,91.0,city 13
+85,Mariam,47.0,3.45,57.0,city 14
+43,Huda,63.0,3.45,94.0,city 15
+24,Mahmoud,40.0,3.45,68.0,city 16
+31,Salem,40.0,3.45,38.0,city 17
+0,Zainab,60.0,2.0,45.0,city 18
+60,Rania,31.0,3.45,26.0,city 20
+23,Mustafa,61.0,3.45,24.0,city 21
+14,Amal,70.0,3.0,34.0,city 22
+4,Nasser,44.0,3.45,69.0,city 23
+15,Layla,40.0,3.45,30.0,city 24
+39,Saeed,63.0,3.45,97.0,city 25
+26,Reem,42.0,3.45,79.0,city 26
+27,Tariq,40.0,3.45,94.0,city 27
+83,Mona,40.0,3.45,4.0,city 28
+34,Yahya,40.0,3.45,5.0,city 29
+33,Samira,69.0,3.45,11.0,city 30
+13,Hamza,61.0,3.45,11.0,city 31
+37,Lina,62.0,3.45,22.0,city 32
+72,Asma,40.0,3.45,31.0,city 34
+87,Faisal,24.0,3.45,69.0,city 35
+88,Wafa,35.0,3.45,33.0,city 36
+7,Anas,59.0,3.45,33.0,city 37
+16,Marwan,69.0,3.45,87.0,city 39
+38,Mohammed,57.0,3.45,13.0,city 42
+73,Khaled,72.0,3.45,6.0,city 45
+94,Fatima,44.0,3.45,37.0,city 46
+75,Maryam,40.0,3.45,26.0,city 47
+99,Yousef,79.0,3.45,17.0,city 48
+19,Noor,52.0,3.45,5.0,city 49
+76,Abdullah,17.0,3.45,34.0,city 50
+90,Omar,70.0,3.45,56.0,city 51
+36,Aisha,40.0,3.45,84.0,city 52
+80,Hassan,46.0,3.45,35.0,city 53
+30,Mariam,38.0,3.45,52.0,city 54
+56,Zainab,40.0,3.45,26.0,city 58
+86,Rania,28.0,3.45,71.0,city 60
+65,Mustafa,21.0,3.45,32.0,city 61
+8,Reem,23.0,3.45,76.0,city 66
+201,Khaled,22.0,3.4,91.0,Sana'a
+202,Yousef,23.0,3.1,85.0,Aden
+203,Nour,21.0,3.7,96.0,Taiz
+204,Huda,24.0,3.6,89.0,Ibb
+205,Omar,22.0,2.8,78.0,Hodeidah
