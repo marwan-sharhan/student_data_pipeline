@@ -291,14 +291,7 @@ def convert_data_types(
 def clean_data(data):
     data = data.copy()
 
-    # إزالة الصفوف المتطابقة تمامًا
-    data = data.drop_duplicates()
-
-    # إزالة السجلات المكررة حسب رقم الطالب
-    if "student_id" in data.columns:
-        data = data.drop_duplicates(
-            subset=["student_id"]
-        )
+   
 
     # تنظيف النصوص
     text_columns = ["name", "city"]
