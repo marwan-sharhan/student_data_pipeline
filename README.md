@@ -388,8 +388,4 @@ git commit -m "Initial commit: complete student data pipeline"
 
 ---
 
-## Author
 
-**Student Data Pipeline Project**
-
-Python | Data Engineering | Machine Learning
